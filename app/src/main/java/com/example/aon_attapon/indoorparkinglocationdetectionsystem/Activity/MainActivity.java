@@ -1,9 +1,11 @@
-package com.example.aon_attapon.indoorparkinglocationdetectionsystem;
+package com.example.aon_attapon.indoorparkinglocationdetectionsystem.Activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.aon_attapon.indoorparkinglocationdetectionsystem.R;
 
 public class MainActivity extends AppCompatActivity {
 
