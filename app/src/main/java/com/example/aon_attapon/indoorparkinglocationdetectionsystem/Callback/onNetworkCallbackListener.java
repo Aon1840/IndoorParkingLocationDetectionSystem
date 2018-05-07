@@ -5,7 +5,7 @@ import com.example.aon_attapon.indoorparkinglocationdetectionsystem.Model.CarPos
 import okhttp3.ResponseBody;
 import retrofit2.Retrofit;
 
-public interface onNetworkCallbackListner {
+public interface onNetworkCallbackListener {
     public void onResponse(CarPosition carPosition, Retrofit retrofit);
     public void onBodyError(ResponseBody responseBodyError);
     public void onBodyErrorIsNull();
