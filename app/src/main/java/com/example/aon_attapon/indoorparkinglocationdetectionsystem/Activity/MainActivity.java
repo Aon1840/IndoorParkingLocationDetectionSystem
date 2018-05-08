@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.example.aon_attapon.indoorparkinglocationdetectionsystem.Callback.onNetworkCallbackListener;
 import com.example.aon_attapon.indoorparkinglocationdetectionsystem.Connections.NetworkConnectionManager;
 import com.example.aon_attapon.indoorparkinglocationdetectionsystem.Model.CarPosition;
+import com.example.aon_attapon.indoorparkinglocationdetectionsystem.Model.User;
 import com.example.aon_attapon.indoorparkinglocationdetectionsystem.R;
 
 import okhttp3.ResponseBody;
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText edId;
     private Button btSend;
-    private TextView tvResultPosiitonID,tvResultParkingTime;
+    private TextView tvResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private void initInstance() {
         edId = (EditText) findViewById(R.id.edId);
         btSend = (Button) findViewById(R.id.btSend);
-        tvResultParkingTime = (TextView) findViewById(R.id.tvResultParkingTime);
+        tvResult = (TextView) findViewById(R.id.tvResult);
 
         btSend.setOnClickListener(onBtSendClickListener);
     }
@@ -49,9 +50,14 @@ public class MainActivity extends AppCompatActivity {
 
     onNetworkCallbackListener networkCallbackListener = new onNetworkCallbackListener() {
         @Override
-        public void onResponse(CarPosition carPosition, Retrofit retrofit) {
-            String data = "Parking Time : "+ carPosition.getTime_created();
-            tvResultParkingTime.setText(data);
+        public void onResponse(User user, Retrofit retrofit) {
+            String data = "ID : "+user.getUser_id()+
+                    "\nUsername : "+user.getUsername()+
+                    "\nname : "+user.getName()+
+                    "\nEmail : "+user.getEmail()+
+                    "\nTel : "+user.getTel();
+
+            tvResult.setText(data);
         }
 
         @Override
