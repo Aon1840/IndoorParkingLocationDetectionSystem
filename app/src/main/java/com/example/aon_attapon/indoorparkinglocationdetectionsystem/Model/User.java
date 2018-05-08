@@ -4,7 +4,7 @@ import com.google.gson.annotations.Expose;
 
 import java.util.Date;
 
-public class User {
+public class User extends CarPosition {
     @Expose
     int user_id;
     @Expose

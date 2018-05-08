@@ -3,6 +3,7 @@ package com.example.aon_attapon.indoorparkinglocationdetectionsystem.Connections
 import com.example.aon_attapon.indoorparkinglocationdetectionsystem.API.ParkingService;
 import com.example.aon_attapon.indoorparkinglocationdetectionsystem.Callback.onNetworkCallbackListener;
 import com.example.aon_attapon.indoorparkinglocationdetectionsystem.Model.CarPosition;
+import com.example.aon_attapon.indoorparkinglocationdetectionsystem.Model.User;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -22,29 +23,54 @@ public class NetworkConnectionManager {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        ParkingService parking = retrofit.create(ParkingService.class);
-        Call call = parking.getCarPositon(user_id);
-        call.enqueue(new Callback<CarPosition>() {
+        ParkingService parkingService = retrofit.create(ParkingService.class);
+        Call call = parkingService.getUser(user_id);
+        call.enqueue(new Callback<User>() {
             @Override
-            public void onResponse(Call<CarPosition> call, Response<CarPosition> response) {
-                CarPosition car = response.body();
+            public void onResponse(Call<User> call, Response<User> response) {
+                User user = response.body();
 
-                if (car == null){
+                if (user == null){ //error 400
                     ResponseBody responseBody = response.errorBody();
                     if(responseBody != null){
                         listener.onBodyError(responseBody);
-                    }else{
+                    }else {
                         listener.onBodyErrorIsNull();
                     }
                 }else {
-                    listener.onResponse(car, retrofit);
+                    listener.onResponse(user, retrofit);
                 }
             }
 
             @Override
-            public void onFailure(Call<CarPosition> call, Throwable t) {
+            public void onFailure(Call<User> call, Throwable t) {
                 listener.onFailure(t);
             }
         });
+
+//        ParkingService parking = retrofit.create(ParkingService.class);
+//        Call call = parking.getCarPositon(user_id);
+//        call.enqueue(new Callback<CarPosition>() {
+//            @Override
+//            public void onResponse(Call<CarPosition> call, Response<CarPosition> response) {
+//                CarPosition car = response.body();
+//
+//                if (car == null){
+//                    ResponseBody responseBody = response.errorBody();
+//                    if(responseBody != null){
+//                        listener.onBodyError(responseBody);
+//                    }else{
+//                        listener.onBodyErrorIsNull();
+//                    }
+//                }else {
+//                    listener.onResponse(car, retrofit);
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<CarPosition> call, Throwable t) {
+//                listener.onFailure(t);
+//            }
+//        });
     }
 }
