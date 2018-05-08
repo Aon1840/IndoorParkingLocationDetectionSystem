@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     View.OnClickListener onBtSendClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            new NetworkConnectionManager().callServer(networkCallbackListener, edId.getId());
+            new NetworkConnectionManager().callServer(networkCallbackListener, Integer.parseInt(edId.getText().toString()));
         }
     };
 

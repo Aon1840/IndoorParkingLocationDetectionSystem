@@ -1,24 +1,40 @@
 package com.example.aon_attapon.indoorparkinglocationdetectionsystem.Model;
 
 import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
 
-public class User extends CarPosition {
+public class User {
+    @SerializedName("user_id")
     @Expose
     int user_id;
+
+    @SerializedName("username")
     @Expose
     String username;
+
+    @SerializedName("password")
     @Expose
     String password;
+
+    @SerializedName("name")
     @Expose
     String name;
+
+    @SerializedName("surname")
     @Expose
     String surname;
+
+    @SerializedName("tel")
     @Expose
     String tel;
+
+    @SerializedName("email")
     @Expose
     String email;
+
+    @SerializedName("register_date")
     @Expose
     Date register_date;
 
