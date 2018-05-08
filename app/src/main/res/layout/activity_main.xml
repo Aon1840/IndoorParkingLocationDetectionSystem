@@ -33,21 +33,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:gravity="center"
-            android:text="Position ID"/>
-        
-        <TextView
-            android:id="@+id/tvResultPosiitonID"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="30sp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Parking Time"/>
+            android:text="User Detial"/>
 
         <TextView
             android:id="@+id/tvResult"
