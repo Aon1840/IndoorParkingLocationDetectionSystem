@@ -23,26 +23,15 @@ public class NetworkConnectionManager {
 
     public void callServer(final onNetworkCallbackListener listener, int user_id){
         final Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://13.251.7.40:8080")
+                .baseUrl("http://13.251.7.40")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         ParkingService parkingService = retrofit.create(ParkingService.class);
         Log.d("user_id", user_id + "");
         Call call = parkingService.getUser(user_id);
-//        Call<Map<String, String>> call = parkingService.getUser2(user_id);
         Log.d("user", call + "");
-//        call.enqueue(new Callback<Map<String, String>>() {
-//            @Override
-//            public void onResponse(Call<Map<String, String>> call, Response<Map<String, String>> response) {
-//                Log.d("response.body", response.body() + "");
-//            }
-//
-//            @Override
-//            public void onFailure(Call<Map<String, String>> call, Throwable t) {
-//                Log.d("response error", t.getMessage());
-//            }
-//        });
+
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
